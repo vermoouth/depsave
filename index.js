@@ -7,12 +7,12 @@ const fetch = require('node-fetch');
 const utils = require('./utils');
 
 
-// function updatePackageLock()
-
-const getDependecyURLs = function (packageName) {
+const getDependecyURLs = function (packageNames) {
+	console.log('Creating temporary project');
 	const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'depsave-'));
+	console.log(`Operating in ${tempDir}`);
 	fs.writeFileSync(path.join(tempDir, 'package.json'), '{"private": true}');
-	console.log(tempDir);
+	console.log('Creating lock file for temporary project');
 	install = child_process.execFileSync(
 		'npm',
 		[
@@ -20,13 +20,13 @@ const getDependecyURLs = function (packageName) {
 			'--package-lock-only', 
 			'--quiet', 
 			'--no-audit',
-			...packageName
+			...packageNames
 		],
 		{
 			cwd: tempDir, shell: true, stdio: 'inherit'
 		}
 	);
-
+	console.log(`Fetching dependencies' urls for ${packageNames.join(', ')}`)
 	const tempLock = require(path.join(tempDir, 'package-lock'));
 	urls = Object.values(tempLock.dependencies).map(dep => dep.resolved);
 	utils.rmdirRecursiveSync(tempDir);
@@ -34,4 +34,4 @@ const getDependecyURLs = function (packageName) {
 	return urls;
 };
 
-console.log(getDependecyURLs('node-fetch@2 @vue/cli'));
+console.log(getDependecyURLs(['node-fetch@2', 'yaml']));
