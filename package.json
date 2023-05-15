@@ -1,0 +1,25 @@
+{
+  "name": "depsave",
+  "version": "0.0.1",
+  "main": "index.js",
+  "keywords": [
+    "dependencies",
+    "download",
+    "pack",
+    "registry",
+    "repository",
+    "npm",
+    "tgz",
+    "verdaccio",
+    "nexus",
+    "artifactory",
+    "pulp",
+    "cli"
+  ],
+  "author": "Vladislav Ermolaev <vermoouth@ya.ru>",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.6.11"
+  },
+  "description": "Straightforward cli tool for downloading package dependencies tgz"
+}
