@@ -21,5 +21,8 @@
   "dependencies": {
     "node-fetch": "^2.6.11"
   },
+  "engines": {
+    "node": ">=8"
+  },
   "description": "Straightforward cli tool for downloading package dependencies tgz"
 }
