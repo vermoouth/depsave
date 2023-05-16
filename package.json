@@ -16,7 +16,7 @@
     "pulp",
     "cli"
   ],
-  "author": "Vladislav Ermolaev <vermoouth@ya.ru>",
+  "author": "Vladislav Ermolaev <vermoouth@ya.ru> (https://vermo.link/)",
   "license": "ISC",
   "dependencies": {
     "node-fetch": "^2.6.11"
@@ -24,5 +24,6 @@
   "engines": {
     "node": ">=8"
   },
+  "repository": "github:vermoouth/depsave",
   "description": "Straightforward cli tool for downloading package dependencies tgz"
 }
