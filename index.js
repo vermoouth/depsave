@@ -8,13 +8,14 @@ const utils = require('./utils');
 
 
 const getDependecyURLs = function (packageNames) {
-	console.log('Creating temporary project');
+	console.info(`Using temporary project to fetch links for ${packageNames.join(', ')} dependencies`)
+	console.debug('Creating temporary project');
 	const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'depsave-'));
 
-	console.log(`Operating in ${tempDir}`);
+	console.debug(`Operating in ${tempDir}`);
 	fs.writeFileSync(path.join(tempDir, 'package.json'), '{"private": true}');
 
-	console.log('Creating lock file for temporary project');
+	console.debug('Creating lock file for temporary project');
 	install = child_process.execFileSync(
 		'npm',
 		[
@@ -29,11 +30,11 @@ const getDependecyURLs = function (packageNames) {
 		}
 	);
 
-	console.log(`Fetching dependencies' urls for ${packageNames.join(', ')}`)
+	console.debug(`Fetching dependencies' urls for ${packageNames.join(', ')}`)
 	const tempLock = require(path.join(tempDir, 'package-lock'));
 	urls = Object.values(tempLock.dependencies).map(dep => dep.resolved);
 
-	console.log(`Removing temporafy directory ${tempDir}`)
+	console.debug(`Removing temporafy directory ${tempDir}`)
 	utils.rmdirRecursiveSync(tempDir);
 
 	return urls;
