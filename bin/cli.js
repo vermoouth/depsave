@@ -13,6 +13,13 @@ cli
   .option('-c, --concurrent [max-concurrent]', 'maximum amount of concurrent downloads')
   .arguments('[package-names...]')
   .action((packages) => {
-    index.depsave(packages, [], {directory: cli.directory, concurrent: cli.concurrent});
+    index.depsave(
+      packages,
+      [],
+      {
+        directory: cli.directory,
+        concurrent: cli.concurrent
+      }
+    );
   })
   .parse(process.argv);
