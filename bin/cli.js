@@ -23,7 +23,7 @@ cli
   .option('-c, --concurrent [int]', 'maximum amount of concurrent downloads', 20)
   .arguments('[package-names...]')
   .action((packages) => {
-    if (packages.length && cli.file.length) {
+    if (packages.length && cli.file !== undefined) {
       console.warn('Usage of package names and package.json file simultaneously is not recommended yet')
     };
     depsave(
