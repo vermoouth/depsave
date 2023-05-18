@@ -1,4 +1,4 @@
-
+#!/usr/bin/env node
 
 const cli = require('commander');
 const index = require('../lib/index')
