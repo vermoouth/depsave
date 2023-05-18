@@ -2,7 +2,7 @@
 
 const cli = require('commander');
 const index = require('../lib/index')
- 
+
 const package = require('../package.json');
 
 
@@ -13,8 +13,6 @@ cli
   .option('-c --concurrent [max-concurrent]', 'maximum amount of concurrent downloads')
   .arguments('[package-names...]')
   .action((packages) => {
-    index.batchDownload(index.getDependecyURLs(packages), cli.directory, cli.concurrent);
+    index.depsave(packages, [], {directory: cli.directory, concurrent: cli.concurrent});
   })
   .parse(process.argv);
-
-// console.log(cli)
