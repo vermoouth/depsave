@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 const cli = require('commander');
-const index = require('../lib/index');
 
+const depsave = require('../lib/index');
 const package = require('../package.json');
 
 
@@ -13,7 +13,7 @@ cli
   .option('-c, --concurrent [int]', 'maximum amount of concurrent downloads', 20)
   .arguments('[package-names...]')
   .action((packages) => {
-    index.depsave(
+    depsave(
       packages,
       [],
       {
