@@ -9,8 +9,8 @@ const package = require('../package.json');
 cli
   .name(package.name)
   .version(package.version.toString(), '-v, --version')
-  .option('-d, --directory [directory]', 'custom directory for downloaded dependencies')
-  .option('-c, --concurrent [max-concurrent]', 'maximum amount of concurrent downloads')
+  .option('-d, --directory [path/to/directory]', 'custom directory for downloaded dependencies (default: depsave-<epoch_time>)')
+  .option('-c, --concurrent [int]', 'maximum amount of concurrent downloads', 20)
   .arguments('[package-names...]')
   .action((packages) => {
     index.depsave(
