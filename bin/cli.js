@@ -3,8 +3,12 @@
 const cli = require('commander');
 const index = require('../lib/index')
  
+const package = require('../package.json');
+
+
 cli
-  .version(require('../package.json').version.toString(), '-v, --version')
+  .name(package.name)
+  .version(package.version.toString(), '-v, --version')
   .option('-d --directory [directory]', 'custom directory for downloaded dependencies')
   .option('-c --concurrent [max-concurrent]', 'maximum amount of concurrent downloads')
   .arguments('[package-names...]')
