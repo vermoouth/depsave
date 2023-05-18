@@ -2,6 +2,10 @@
 Straightforward cli tool for downloading package dependencies tgz using standard
 npm approach.
 
+## Features
+- Downloading tgz files for packages, passed in command line
+- Downloading tgz files for dependencies from package.json
+
 
 ## Installation
 ```bash
@@ -14,8 +18,9 @@ npm i -g depsave
 Usage: depsave [options] [package-names...]
 
 Options:
-  -v, --version                      output the version number
-  -d, --directory [directory]        custom directory for downloaded dependencies
-  -c, --concurrent [max-concurrent]  maximum amount of concurrent downloads
-  -h, --help                         output usage information
+  -v, --version                        output the version number
+  -d, --directory [path/to/directory]  custom directory for downloaded dependencies (default: depsave-<epoch_time>)
+  -f, --file [path/to/package.json]    package.json file to fetch dependencies from
+  -c, --concurrent [int]               maximum amount of concurrent downloads (default: 20)
+  -h, --help                           output usage information
 ```
